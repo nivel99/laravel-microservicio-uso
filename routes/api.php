@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Usando la nueva sintaxis para Laravel 8
-Route::get('uso', [UsoController::class, 'index']);
-Route::post('uso/create', [UsoController::class, 'store']);
+Route::get('uso', [UsoController::class, 'index'])->middleware('validateJWT');
+Route::post('uso/create', [UsoController::class, 'store'])->middleware('validateJWT');
