@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsoController;
 use App\Http\Controllers\ExtrahospitalarioController;
+use App\Http\Controllers\LugaresController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,3 +30,10 @@ Route::post('/extrahospitalario/create', [ExtrahospitalarioController::class, 's
 Route::get('/extrahospitalario/{id}', [ExtrahospitalarioController::class, 'show'])->middleware('validateJWT');
 Route::put('/extrahospitalario/{id}', [ExtrahospitalarioController::class, 'update'])->middleware('validateJWT');
 Route::delete('/extrahospitalario/{id}', [ExtrahospitalarioController::class, 'destroy'])->middleware('validateJWT');
+
+// Rutas para Lugares
+Route::get('/lugares', [LugaresController::class, 'index'])->middleware('validateJWT');
+Route::post('/lugares/create', [LugaresController::class, 'store'])->middleware('validateJWT');
+Route::get('/lugares/{id}', [LugaresController::class, 'show'])->middleware('validateJWT');
+Route::put('/lugares/{id}', [LugaresController::class, 'update'])->middleware('validateJWT');
+Route::delete('/lugares/{id}', [LugaresController::class, 'destroy'])->middleware('validateJWT');
