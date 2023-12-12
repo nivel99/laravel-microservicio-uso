@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Rutas para uso
-Route::get('uso', [UsoController::class, 'index'])->middleware('validateJWT');
+Route::get('uso', [UsoController::class, 'index']);
 Route::post('uso/create', [UsoController::class, 'store'])->middleware('validateJWT');
 
 // Rutas para Extrahospitalario
