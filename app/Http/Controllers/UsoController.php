@@ -75,7 +75,38 @@ class UsoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Buscar el registro por ID
+        $uso = Uso::findOrFail($id);
+    
+        // Validar los datos recibidos en la solicitud
+        $validatedData = $request->validate([
+            'uso_fechaevento' => 'required',
+            'uso_nombrelugarevento' => 'required',
+            'uso_personaatenidadeventonombre' => 'required',
+            'uso_personaatenidadeventotipodocumento' => 'required',
+            'uso_personaatenidadeventonumerodocumento' => 'required',
+            'uso_personaatenidadeventoedad' => 'required',
+            'uso_personaatenidadeventosexo' => 'required',
+            'uso_personaatenidadeventoaseguradorsalud' => 'required',
+            'uso_datoseventonombrepersonautorizodea' => 'required',
+            'uso_datoseventotipodocumento' => 'required',
+            'uso_datoseventonumerodocumento' => 'required',
+            'uso_datoseventotelefono' => 'required',
+            'uso_datoseventohorainicioevento' => 'required',
+            'uso_datoseventohoraactivacioncadenasupervivencia' => 'required',
+            'uso_datoseventohorautlizaciondea' => 'required',
+            'uso_datoseventohoratrasladopersonaatendida' => 'required',
+            'uso_datosmediotransportenombreenccargado' => 'required',
+            'uso_datosmediotransportemediotransporte' => 'required',
+            'uso_datosmediotransporteempresaambulancia' => 'required',
+            'uso_datosmediotransporteobservaciones' => 'required'
+        ]);
+    
+        // Actualizar el modelo con los datos validados
+        $uso->update($validatedData);
+    
+        // Retornar una respuesta JSON con el modelo actualizado y un código de estado 200 (OK)
+        return response()->json($uso, 200);
     }
 
     /**
